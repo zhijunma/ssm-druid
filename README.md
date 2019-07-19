@@ -4,9 +4,13 @@
 ##  druid查看地址 http://localhost:82/druid/sql.html
 ##  swagger 接口查看地址 http://localhost:82/swagger-ui.html#
 
-#druid配置步骤
-##1 导入依赖包 
-##2 在apllication.properties文件中配置druid连接池 信息
+# druid配置步骤
+## 1 导入依赖包 
+## 2 在apllication.properties文件中配置druid连接池 信息
+## 3 配置DruidConfig.java
+## 4 配置DruidDBconfig.java
+## 结束
+
 spring.datasource.url=jdbc:mysql://47.103.31.213:3306/shop?serverTimezone=GMT%2B8&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8
 spring.datasource.username=root
 spring.datasource.password=Mysql123456!
