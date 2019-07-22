@@ -1,11 +1,14 @@
-package com.cn.school.entity.mzj;
+package com.cn.school.FormView;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author Administrator
+ */
 @Data
-public class DSUserInfo {
+public class UserInfoViewForm {
     /**
      * 主键
      */

@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author Administrator
  */
@@ -13,10 +15,11 @@ import org.springframework.stereotype.Repository;
 public interface UserInfoManageMapper {
 
     /**
-     * @Prame guid
-     * 通过guid获取用户信息
+     * 通过条件获取用户信息
+     * @param ds
+     * @return
      */
-    DSUserInfo getUserInfoByGuid(@Param("guid") Long guid);
+    List<DSUserInfo> getUserInfoByItem(@Param("ds") DSUserInfo ds);
 
     /**
      * 更新用户信息
@@ -24,4 +27,15 @@ public interface UserInfoManageMapper {
      * @return
      */
     Integer updateUserInfo(@Param("ds") DSUserInfo ds);
+    /**
+     * 更新用户信息
+     * @return
+     */
+    List<DSUserInfo> getAllUsers();
+    /**
+     * 删除用户信息
+     * @param list
+     * @return
+     */
+    Integer deleteUser(@Param("list") List<Long> list);
 }

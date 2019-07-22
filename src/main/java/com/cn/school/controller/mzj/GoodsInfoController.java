@@ -1,7 +1,6 @@
 package com.cn.school.controller.mzj;
 
 import com.cn.school.FormView.GetGoodsViewForm;
-import com.cn.school.FormView.GetUserInfoViewForm;
 import com.cn.school.entity.mzj.DSGoodsInfo;
 import com.cn.school.service.mzj.GoodsInfoService;
 import io.swagger.annotations.Api;

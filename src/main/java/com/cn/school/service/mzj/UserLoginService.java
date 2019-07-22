@@ -1,6 +1,6 @@
 package com.cn.school.service.mzj;
 
-import com.cn.school.FormView.GetUserInfoViewForm;
+import com.cn.school.FormView.UserInfoViewForm;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -10,12 +10,12 @@ public interface UserLoginService {
      * @param form
      * @return
      */
-    String userLogin(GetUserInfoViewForm form);
+    String userLogin(UserInfoViewForm form);
 
     /**
      * 添加用户信息
      * @param form
      * @return
      */
-    String addUserInfo(GetUserInfoViewForm form);
+    String addUserInfo(UserInfoViewForm form);
 }

@@ -1,6 +1,6 @@
 package com.cn.school.controller.mzj;
 
-import com.cn.school.FormView.GetUserInfoViewForm;
+import com.cn.school.FormView.UserInfoViewForm;
 import com.cn.school.service.mzj.UserLoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
@@ -23,13 +23,13 @@ public class UserLoginController {
     @PostMapping(value = "/Login")
     @ApiOperation(value="用户登录")
     @ResponseBody
-    public String userLogin(GetUserInfoViewForm form) {
+    public String userLogin(UserInfoViewForm form) {
         return userLoginService.userLogin(form);
     }
     @PostMapping(value = "/Register")
     @ApiOperation(value="用户注册")
     @ResponseBody
-    public String register(GetUserInfoViewForm form) {
+    public String register(UserInfoViewForm form) {
         return userLoginService.addUserInfo(form);
     }
 }

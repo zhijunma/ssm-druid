@@ -1,50 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.school.mapper.mzj.UserLoginMapper">
-    <!--将加密后的密文写入数据库-->
+    <!--用户注册-->
     <insert id="addUserInfo">
-        <selectKey keyProperty="ds.guid" order="AFTER" resultType="java.lang.Long">
+        <selectKey keyProperty="ds.userId" order="AFTER" resultType="java.lang.Long">
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO user_info(
-        user_name,
         user_password,
-        mobile_phone
+        mobile_phone,
+        add_time
         )
         VALUES
         (
-        #{ds.userName},
         #{ds.userPassword},
-        #{ds.mobilePhone}
+        #{ds.mobilePhone},
+        #{ds.addTime}
         )
     </insert>
-    <!-- 通过desId获取加密的key -->
+    <!-- 通过用户账号获取密码 -->
     <select id="getUserByMobilePhone" resultType="com.cn.school.entity.mzj.DSUserInfo">
         SELECT
-            guid,
-            user_password as userPassword,
-            user_name as userName,
-            mobile_phone as mobilePhone
+            user_id as userId,
+            user_password as userPassword
         FROM
             user_info
         WHERE
         delete_flag = 0
         and mobile_phone = #{mobilePhone}
     </select>
-    <select id="getUserPassword" resultType="com.cn.school.entity.mzj.DSUserInfo">
-        SELECT
-        guid,
-        user_password as userPassword
-        FROM
-        user_info
-        WHERE
-        delete_flag = 0
-        <if test="ds.userName != null and '' != ds.userName">
-            and user_name = #{ds.userName}
-        </if>
-        <if test="ds.mobilePhone != null and '' != ds.mobilePhone">
-            and mobile_phone = #{ds.mobilePhone}
-        </if>
-    </select>
-
 </mapper>

@@ -13,7 +13,7 @@ public interface UserLoginMapper {
      * @param ds
      * @return
      */
-    DSUserInfo getUserPassword(@Param("ds") DSUserInfo ds);
+//    DSUserInfo getUserPassword(@Param("ds") DSUserInfo ds);
 
     /**
      * 通过用户昵称或者电话号码获取密码
@@ -24,10 +24,10 @@ public interface UserLoginMapper {
 
     /**
      * 查看用户是否存在
-     * @param guid
+     * @param mobilePhone
      * @return
      */
-    DSUserInfo getUserByMobilePhone(@Param("guid") Long guid);
+    DSUserInfo getUserByMobilePhone(@Param("mobilePhone") Long mobilePhone);
 
 
 }
