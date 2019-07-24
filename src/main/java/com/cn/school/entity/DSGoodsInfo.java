@@ -1,4 +1,4 @@
-package com.cn.school.entity.mzj;
+package com.cn.school.entity;
 
 import lombok.Data;
 

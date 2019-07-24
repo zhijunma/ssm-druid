@@ -1,9 +1,9 @@
-package com.cn.school.service.mzj.impl;
+package com.cn.school.service.impl;
 
 import com.cn.school.FormView.UserInfoViewForm;
-import com.cn.school.entity.mzj.DSUserInfo;
-import com.cn.school.mapper.mzj.UserLoginMapper;
-import com.cn.school.service.mzj.UserLoginService;
+import com.cn.school.entity.DSUserInfo;
+import com.cn.school.mapper.UserLoginMapper;
+import com.cn.school.service.UserLoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

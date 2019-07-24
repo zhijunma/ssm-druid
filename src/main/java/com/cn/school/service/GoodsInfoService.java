@@ -1,7 +1,7 @@
-package com.cn.school.service.mzj;
+package com.cn.school.service;
 
 import com.cn.school.FormView.GetGoodsViewForm;
-import com.cn.school.entity.mzj.DSGoodsInfo;
+import com.cn.school.entity.DSGoodsInfo;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

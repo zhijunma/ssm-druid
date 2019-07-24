@@ -1,9 +1,9 @@
-package com.cn.school.controller.mzj;
+package com.cn.school.controller;
 
 import com.cn.school.FormView.DeleteUserViewFrom;
 import com.cn.school.FormView.UserInfoViewForm;
-import com.cn.school.entity.mzj.DSUserInfo;
-import com.cn.school.service.mzj.UserInfoManageService;
+import com.cn.school.entity.DSUserInfo;
+import com.cn.school.service.UserInfoManageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;

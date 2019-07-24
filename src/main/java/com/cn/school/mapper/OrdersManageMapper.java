@@ -1,6 +1,6 @@
-package com.cn.school.mapper.mzj;
+package com.cn.school.mapper;
 
-import com.cn.school.entity.mzj.DSOrders;
+import com.cn.school.entity.DSOrders;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

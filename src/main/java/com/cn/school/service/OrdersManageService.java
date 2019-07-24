@@ -1,4 +1,4 @@
-package com.cn.school.service.mzj;
+package com.cn.school.service;
 
 import com.cn.school.FormView.AddUserOrderViewForm;
 import org.springframework.transaction.annotation.Transactional;

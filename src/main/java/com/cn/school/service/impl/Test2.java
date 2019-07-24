@@ -1,4 +1,4 @@
-package com.cn.school.service.mzj.impl;
+package com.cn.school.service.impl;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;

@@ -1,9 +1,9 @@
-package com.cn.school.service.mzj.impl;
+package com.cn.school.service.impl;
 
 import com.cn.school.FormView.AddUserOrderViewForm;
-import com.cn.school.entity.mzj.DSOrders;
-import com.cn.school.mapper.mzj.OrdersManageMapper;
-import com.cn.school.service.mzj.OrdersManageService;
+import com.cn.school.entity.DSOrders;
+import com.cn.school.mapper.OrdersManageMapper;
+import com.cn.school.service.OrdersManageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

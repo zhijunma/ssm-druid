@@ -1,8 +1,8 @@
-package com.cn.school.controller.mzj;
+package com.cn.school.controller;
 
 import com.cn.school.FormView.GetGoodsViewForm;
-import com.cn.school.entity.mzj.DSGoodsInfo;
-import com.cn.school.service.mzj.GoodsInfoService;
+import com.cn.school.entity.DSGoodsInfo;
+import com.cn.school.service.GoodsInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;

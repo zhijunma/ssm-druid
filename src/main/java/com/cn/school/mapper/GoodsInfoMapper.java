@@ -1,6 +1,6 @@
-package com.cn.school.mapper.mzj;
+package com.cn.school.mapper;
 
-import com.cn.school.entity.mzj.DSGoodsInfo;
+import com.cn.school.entity.DSGoodsInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -21,4 +21,10 @@ public interface GoodsInfoMapper {
      * @return
      */
     List<DSGoodsInfo> getGoodsinfo(@Param("ds") DSGoodsInfo ds);
+    /**
+     * 条件获取商品信息
+     * @param ds
+     * @return
+     */
+    List<DSGoodsInfo> addGoodsinfo(@Param("ds") DSGoodsInfo ds);
 }

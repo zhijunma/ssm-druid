@@ -1,9 +1,9 @@
-package com.cn.school.service.mzj;
+package com.cn.school.service;
 
 
 import com.cn.school.FormView.DeleteUserViewFrom;
 import com.cn.school.FormView.UserInfoViewForm;
-import com.cn.school.entity.mzj.DSUserInfo;
+import com.cn.school.entity.DSUserInfo;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

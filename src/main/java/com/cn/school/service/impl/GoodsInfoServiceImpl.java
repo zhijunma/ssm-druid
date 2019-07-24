@@ -1,9 +1,9 @@
-package com.cn.school.service.mzj.impl;
+package com.cn.school.service.impl;
 
 import com.cn.school.FormView.GetGoodsViewForm;
-import com.cn.school.entity.mzj.DSGoodsInfo;
-import com.cn.school.mapper.mzj.GoodsInfoMapper;
-import com.cn.school.service.mzj.GoodsInfoService;
+import com.cn.school.entity.DSGoodsInfo;
+import com.cn.school.mapper.GoodsInfoMapper;
+import com.cn.school.service.GoodsInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

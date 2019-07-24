@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.cn.school.mapper.mzj.GoodsInfoMapper">
+<mapper namespace="com.cn.school.mapper.GoodsInfoMapper">
+
+
     <!--条件获取商品信息-->
-    <select id="getGoodsinfo" resultType="com.cn.school.entity.mzj.DSGoodsInfo">
+    <select id="getGoodsinfo" resultType="com.cn.school.entity.DSGoodsInfo">
         SELECT
         guid,
         goods_name as goodsName,

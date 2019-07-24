@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.school.mapper.GoodTypeManageMapper">
+
+    <!--添加用户信息-->
+    <insert id="addGoodType">
+        <selectKey keyProperty="ds.goodTypeId" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        good_type (
+        type_name,
+        remake,
+        add_time
+        )
+        values (
+        #{ds.typeName},
+        #{ds.remake},
+        #{ds.addTime}
+        )
+    </insert>
+    <!--删除类型（假删除）-->
+    <update id="deleteGoodType">
+        update good_type
+        set delete_flag = 1
+        where delete_flag = 0
+        and good_type_id in
+        <foreach collection="list" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </update>
+
+
+    <!--修改类型 -->
+    <update id="updateGoodType">
+        update good_type
+        set
+        <if test="ds.typeName != null and '' != ds.typeName">
+            type_name = #{ds.typeName},
+        </if>
+        <if test="ds.remake != null and '' != ds.remake">
+            remake = #{ds.remake},
+        </if>
+        delete_flag = 0
+        where
+        delete_flag = 0
+        and
+        good_type_id = #{ds.goodTypeId}
+    </update>
+    <!--获取类型信息-->
+    <select id="getGoodType" resultType="com.cn.school.entity.DSGoodType">
+        select
+        good_type_id as goodTypeId,
+        type_name as typeName,
+        remake,
+        add_time as addTime,
+        delete_flag as deleteFlag
+        from good_type
+        where delete_flag = 0
+        <if test="ds.goodTypeId != null and '' != ds.goodTypeId">
+            and good_type_id = #{ds.goodTypeId}
+        </if>
+        <if test="ds.typeName != null and '' != ds.typeName">
+            and type_name like concat('%',#{ds.typeName},'%')
+        </if>
+        <if test="ds.remake != null and '' != ds.remake">
+            and remake like concat('%',#{ds.remake},'%')
+        </if>
+
+    </select>
+</mapper>
