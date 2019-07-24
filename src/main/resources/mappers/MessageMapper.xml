@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.school.mapper.MessageMapper">
+
+<!--添加留言信息-->
+    <insert id="addMessage">
+        <selectKey keyProperty="ds.guid" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        message(
+        message,
+        add_visitor,
+        add_visitor_id,
+        add_time
+        )
+        values (
+        #{ds.message},
+        #{ds.addVisitor},
+        #{ds.addVisitorId},
+        #{ds.addTime}
+        )
+    </insert>
+    <!--查看信息-->
+    <select id="getMessage" resultType="com.cn.school.entity.DSMessageInfo">
+        select
+        guid,
+        message,
+        add_visitor,
+        add_visitor_id,
+        add_time
+        from message
+        where delete_flag = 0
+        <if test="ds.guid != null and '' != ds.guid">
+           and guid = #{ds.guid}
+        </if>
+        <if test="ds.message != null and '' != ds.message">
+            and add_visitor = #{ds.addVisitor}
+        </if>
+        <if test="ds.message != null and '' != ds.message">
+            and message like concat('%',#{ds.message},'%')
+        </if>
+        <if test="ds.addVisitorId != null and '' != ds.addVisitorId">
+            and add_visitor_id=#{ds.addVisitorId}
+        </if>
+        <if test="ds.addTime != null and '' != ds.addTime">
+            and add_time between #{ds.addTime} and #{ds.addTime}
+        </if>
+    </select>
+    <select id="countMessage" resultType="java.lang.Integer">
+        select count(guid)
+        from message
+        where delete_flag = 0
+        and add_visitor_id = #{ds.addVisitorId}
+        and add_time = #{ds.addTime}
+    </select>
+</mapper>

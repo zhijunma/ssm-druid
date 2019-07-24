@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.school.mapper.VisitorMapper">
+
+    <!--添加留言信息-->
+    <insert id="addVisitor">
+        <selectKey keyProperty="ds.guid" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        visitor(
+        visitor_name,
+        phone,
+        qq,
+        wx,
+        email,
+        add_time
+        )
+        values (
+        #{ds.visitorName},
+        #{ds.phone},
+        #{ds.qq},
+        #{ds.wx},
+        #{ds.email},
+        #{ds.addTime}
+        )
+    </insert>
+    <!---->
+    <select id="getCountTimeBySome" resultType="com.cn.school.entity.DSVisitorInfo">
+        select
+        guid,
+        visitor_name as visitorName,
+        count_time as countTime
+        from visitor
+        where delete_flag = 0
+        <if test="ds.qq != null and '' != ds.qq">
+            and qq = #{ds.qq}
+        </if>
+        <if test="ds.wx != null and '' != ds.wx">
+            and wx = #{ds.wx}
+        </if>
+        <if test="ds.email != null and '' != ds.email">
+            and email = #{ds.email}
+        </if>
+        <if test="ds.phone != null and '' != ds.phone">
+            and phone = #{ds.phone}
+        </if>
+    </select>
+    <!---->
+    <update id="updateCountTimeByGuid">
+        update visitor
+        set
+        count_time = #{ds.countTime}
+        where
+        guid = #{ds.guid}
+    </update>
+</mapper>
