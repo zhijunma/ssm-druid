@@ -47,7 +47,7 @@ public class MessageServiceImpl implements MessageService {
             //添加用户
             Integer state = visitorMapper.addVisitor(dsVisitorInfo);
             if (state <= 0){
-                return "添加失败！";
+                return "留言失败！";
             } else {
                 DSMessageInfo ds = new DSMessageInfo();
                 ds.setMessage(form.getMessage());
@@ -57,9 +57,9 @@ public class MessageServiceImpl implements MessageService {
                 //添加留言
                 Integer sta = messageMapper.addMessage(ds);
                 if (sta <= 0) {
-                    return "添加失败！";
+                    return "留言失败！";
                 } else {
-                    return "添加成功！";
+                    return "留言成功！";
                 }
             }
         } else {
@@ -78,16 +78,16 @@ public class MessageServiceImpl implements MessageService {
                 //添加留言
                 Integer sta = messageMapper.addMessage(messageInfo);
                 if (sta <= 0) {
-                    return "添加失败！";
+                    return "留言失败！";
                 } else {
                     DSVisitorInfo updateInfo = new DSVisitorInfo();
                     updateInfo.setGuid(visitors.get(0).getGuid());
                     updateInfo.setCountTime(visitors.get(0).getCountTime() + 1);
                     Integer states = visitorMapper.updateCountTimeByGuid(updateInfo);
                     if (states <= 0) {
-                        return "添加失败！";
+                        return "留言失败！";
                     } else {
-                        return "添加成功！";
+                        return "留言成功！";
                     }
 
                 }
