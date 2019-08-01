@@ -1,5 +1,6 @@
 package com.cn.school.mapper;
 
+import com.cn.school.FormView.VO.MessageInfoVO;
 import com.cn.school.entity.DSMessageInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -25,7 +26,7 @@ public interface MessageMapper {
      * @param ds
      * @return
      */
-    List<DSMessageInfo> getMessage(@Param("ds") DSMessageInfo ds);
+    List<MessageInfoVO> getMessage(@Param("ds") DSMessageInfo ds);
 
     /**
      * 统计一个人今天的留言数

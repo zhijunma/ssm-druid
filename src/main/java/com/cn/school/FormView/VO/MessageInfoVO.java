@@ -1,14 +1,18 @@
-package com.cn.school.FormView;
+package com.cn.school.FormView.VO;
 
 import lombok.Data;
 
-
+import java.time.LocalDate;
 /**
- * 添加人信息
+ * 留言VO
  * @author Administrator
  */
 @Data
-public class AddMessageForm {
+public class MessageInfoVO {
+    /**
+     * 主键
+     */
+    private Integer guid;
     /**
      * 信息
      */
@@ -21,10 +25,6 @@ public class AddMessageForm {
      * 访问者ID
      */
     private Integer addVisitorId;
-    /**
-     * 拉黑？0：1
-     */
-    private String deleteFlag;
     /**
      * 电话
      */
@@ -41,4 +41,8 @@ public class AddMessageForm {
      * 邮箱
      */
     private String email;
+    /**
+     * 时间
+     */
+    private LocalDate addTime;
 }

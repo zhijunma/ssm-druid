@@ -22,29 +22,34 @@
         )
     </insert>
     <!--查看信息-->
-    <select id="getMessage" resultType="com.cn.school.entity.DSMessageInfo">
+    <select id="getMessage" resultType="com.cn.school.FormView.VO.MessageInfoVO">
         select
-        guid,
-        message,
-        add_visitor,
-        add_visitor_id,
-        add_time
-        from message
-        where delete_flag = 0
+        m.guid as guid,
+        m.message as message,
+        m.add_visitor as addVisitor,
+        m.add_visitor_id as addVisitorId,
+        m.add_time as addTime,
+        v.qq as qq,
+        v.email as email,
+        v.wx as wx,
+        v.phone as phone
+        from message m,visitor v
+        where m.delete_flag = 0
+        and m.add_visitor_id = v.guid
         <if test="ds.guid != null and '' != ds.guid">
-           and guid = #{ds.guid}
+           and m.guid = #{ds.guid}
+        </if>
+        <if test="ds.addVisitor != null and '' != ds.addVisitor">
+            and m.add_visitor like concat('%',#{ds.addVisitor},'%')
         </if>
         <if test="ds.message != null and '' != ds.message">
-            and add_visitor = #{ds.addVisitor}
-        </if>
-        <if test="ds.message != null and '' != ds.message">
-            and message like concat('%',#{ds.message},'%')
+            and m.message like concat('%',#{ds.message},'%')
         </if>
         <if test="ds.addVisitorId != null and '' != ds.addVisitorId">
-            and add_visitor_id=#{ds.addVisitorId}
+            and m.add_visitor_id=#{ds.addVisitorId}
         </if>
         <if test="ds.addTime != null and '' != ds.addTime">
-            and add_time between #{ds.addTime} and #{ds.addTime}
+            and m.add_time between #{ds.addTime} and #{ds.addTime}
         </if>
     </select>
     <select id="countMessage" resultType="java.lang.Integer">

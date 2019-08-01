@@ -1,6 +1,8 @@
 package com.cn.school.service.impl;
 
 import com.cn.school.FormView.AddMessageForm;
+import com.cn.school.FormView.GetMessageForm;
+import com.cn.school.FormView.VO.MessageInfoVO;
 import com.cn.school.entity.DSMessageInfo;
 import com.cn.school.entity.DSVisitorInfo;
 import com.cn.school.mapper.MessageMapper;
@@ -16,6 +18,7 @@ import java.util.List;
 
 /**
  * 信息管理
+ * @author Administrator
  */
 @Slf4j
 @Service
@@ -31,7 +34,7 @@ public class MessageServiceImpl implements MessageService {
      * @return
      */
     @Override
-    public String addMesaage(AddMessageForm form) {
+    public String addMessage(AddMessageForm form) {
 
         //访问者信息
         DSVisitorInfo dsVisitorInfo = new DSVisitorInfo();
@@ -96,5 +99,26 @@ public class MessageServiceImpl implements MessageService {
             }
 
         }
+    }
+
+    /**
+     * 获取信息
+     *
+     * @param form
+     * @return
+     */
+    @Override
+    public List<MessageInfoVO> selectMessage(GetMessageForm form) {
+
+        DSMessageInfo ds = new DSMessageInfo();
+        ds.setAddVisitorId(form.getAddVisitorId());
+        ds.setAddVisitor(form.getAddVisitor());
+        ds.setGuid(form.getGuid());
+        ds.setAddTime(form.getAddTime());
+
+        List<MessageInfoVO> infos  =  messageMapper.getMessage(ds);
+
+
+        return infos;
     }
 }

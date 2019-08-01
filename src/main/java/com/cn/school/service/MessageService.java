@@ -1,8 +1,11 @@
 package com.cn.school.service;
 
 import com.cn.school.FormView.AddMessageForm;
-import com.cn.school.entity.DSMessageInfo;
+import com.cn.school.FormView.GetMessageForm;
+import com.cn.school.FormView.VO.MessageInfoVO;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * 信息管理
@@ -15,5 +18,11 @@ public interface MessageService {
      * @param form
      * @return
      */
-    String addMesaage(AddMessageForm form);
+    String addMessage(AddMessageForm form);
+    /**
+     * 获取信息
+     * @param form
+     * @return
+     */
+    List<MessageInfoVO> selectMessage(GetMessageForm form);
 }

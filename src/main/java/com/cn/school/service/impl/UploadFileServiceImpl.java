@@ -1,10 +1,10 @@
-package com.cn.school.controller;
+package com.cn.school.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
+import com.cn.school.service.UploadFileService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
@@ -15,16 +15,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.sun.xml.internal.fastinfoset.util.DuplicateAttributeVerifier.MAP_SIZE;
-@RestController
-@Api(description = "uploadController",tags = {"上传文件"})
-@ApiModel(value="上传文件",description="上传文件")
-@RequestMapping(value = "/upload")
-public class uploadController {
-    public final static String UPLOAD_FILE_PATH = "D:\\data\\";
 
-    @ApiOperation(value="上传文件")
-    @PostMapping(value = "uploadFile")
-    public String uploadImage(@RequestParam("file") MultipartFile file) {
+/**
+ *
+ */
+@Service
+@Slf4j
+public class UploadFileServiceImpl implements UploadFileService {
+    @Value("${file.uploadFolder}")
+    public String UPLOAD_FILE_PATH;
+    /**
+     * 上传文件
+     *
+     * @param file
+     * @return
+     */
+    @Override
+    public String uploadFile(MultipartFile file) {
         if (!file.isEmpty()) {
             Map<String, String> resObj = new HashMap<>(MAP_SIZE);
             try {
