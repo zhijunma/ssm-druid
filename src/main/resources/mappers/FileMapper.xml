@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.school.mapper.FileMapper">
+
+
+    <insert id="uploadFile">
+        insert into file(
+        filetype,
+        file_src,
+        add_time,
+        add_user,
+        add_user_id
+        ) values (
+        #{ds.fileType},
+        #{ds.fileSrc},
+        #{ds.addTime},
+        #{ds.addUser},
+        #{ds.addUserId}
+        )
+    </insert>
+    <select id="getFiles" resultType="com.cn.school.entity.DSFileInfo">
+        select
+        file_id as fileId,
+        filetype as fileType,
+        file_src as fileSrc,
+        add_time as addTime,
+        add_user as addUser,
+        add_user_id as addUserId
+        from file
+        where delete_flag = 0
+        <if test="ds.fileId != null and '' != ds.fileId">
+            and file_id = #{ds.fileId}
+        </if>
+        <if test="ds.fileType != null and '' !=  ds.fileType">
+            and filetype = #{ds.fileType}
+        </if>
+        <if test="ds.addUser != null and '' != ds.addUser">
+            and add_user = #{ds.addUser}
+        </if>
+        <if test="ds.addUserId != null and '' != ds.addUserId">
+            and add_user_id = #{ds.addUserId}
+        </if>
+    </select>
+</mapper>
