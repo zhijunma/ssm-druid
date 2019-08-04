@@ -4,7 +4,7 @@ import com.cn.school.FormView.AddMessageForm;
 import com.cn.school.FormView.GetMessageForm;
 import com.cn.school.FormView.VO.MessageInfoVO;
 import com.cn.school.entity.DSMessageInfo;
-import com.cn.school.entity.DSVisitorInfo;
+import com.cn.school.entity.DSVisitorsInfo;
 import com.cn.school.mapper.MessageMapper;
 import com.cn.school.mapper.VisitorMapper;
 import com.cn.school.service.MessageService;
@@ -37,7 +37,7 @@ public class MessageServiceImpl implements MessageService {
     public String addMessage(AddMessageForm form) {
 
         //访问者信息
-        DSVisitorInfo dsVisitorInfo = new DSVisitorInfo();
+        DSVisitorsInfo dsVisitorInfo = new DSVisitorsInfo();
         dsVisitorInfo.setVisitorName(form.getAddVisitor());
         dsVisitorInfo.setAddTime(LocalDate.now());
         dsVisitorInfo.setEmail(form.getEmail());
@@ -45,7 +45,7 @@ public class MessageServiceImpl implements MessageService {
         dsVisitorInfo.setQq(form.getQq());
         dsVisitorInfo.setWx(form.getWx());
         //判断访问者是否曾经访问过
-        List<DSVisitorInfo> visitors = visitorMapper.getCountTimeBySome(dsVisitorInfo);
+        List<DSVisitorsInfo> visitors = visitorMapper.getCountTimeBySome(dsVisitorInfo);
         if (visitors.size() != 1){
             //添加用户
             Integer state = visitorMapper.addVisitor(dsVisitorInfo);
@@ -83,7 +83,7 @@ public class MessageServiceImpl implements MessageService {
                 if (sta <= 0) {
                     return "留言失败！";
                 } else {
-                    DSVisitorInfo updateInfo = new DSVisitorInfo();
+                    DSVisitorsInfo updateInfo = new DSVisitorsInfo();
                     updateInfo.setGuid(visitors.get(0).getGuid());
                     updateInfo.setCountTime(visitors.get(0).getCountTime() + 1);
                     Integer states = visitorMapper.updateCountTimeByGuid(updateInfo);

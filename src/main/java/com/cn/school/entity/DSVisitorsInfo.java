@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * @author Administrator
  */
 @Data
-public class DSVisitorInfo {
+public class DSVisitorsInfo {
     /**
      * 主键
      */
