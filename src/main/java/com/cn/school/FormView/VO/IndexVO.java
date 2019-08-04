@@ -1,6 +1,9 @@
 package com.cn.school.FormView.VO;
 
+import com.cn.school.DTO.FileCountDTO;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * 首页VO
@@ -20,4 +23,8 @@ public class IndexVO {
      * 下载总数
      */
     private Integer visitCount;
+    /**
+     * 添加文件具体信息
+     */
+    private List<FileCountDTO> filesCount;
 }

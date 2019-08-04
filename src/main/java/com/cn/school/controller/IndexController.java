@@ -26,10 +26,11 @@ public class IndexController {
      * 首页数据传送
      * @return
      */
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/getIndexInfo")
     @ResponseBody
-    @ApiOperation(value="添加留言")
+    @ApiOperation(value="首页数据控值")
     public IndexVO indexInfo() {
         return indexService.getIndexInfo();
     }
+
 }

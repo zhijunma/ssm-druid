@@ -14,4 +14,12 @@
         sum(v.count_time) as visitCount
         from visitors v
     </select>
+    <!--统计文件类型下的数目-->
+    <select id="getFileCount" resultType="com.cn.school.DTO.FileCountDTO">
+        select
+        filetype as fileType,
+        COUNT(file_id) as fileCount
+        from file
+        GROUP by filetype
+    </select>
 </mapper>

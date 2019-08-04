@@ -27,6 +27,7 @@ public class IndexServiceImpl implements IndexService {
         vo.setPraiseCount(dto.getPraiseCount());
         vo.setFileCount(dto.getFileCount());
         vo.setVisitCount(indexMapper.getIndexVisitCount());
-       return vo;
+        vo.setFilesCount(indexMapper.getFileCount());
+        return vo;
     }
 }
