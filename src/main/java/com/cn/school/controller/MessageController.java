@@ -15,8 +15,8 @@ import java.util.List;
 /**
  * 信息管理控制器
  */
-@Api(description = "MessageController",tags = {"留言管理"})
-@ApiModel(value="留言管理",description="留言管理")
+@Api(description = "MessageController",tags = {"留言添加"})
+@ApiModel(value="留言添加",description="留言添加")
 @RestController
 @RequestMapping(value = "/message")
 public class MessageController {
