@@ -46,6 +46,13 @@
             and phone = #{ds.phone}
         </if>
     </select>
+
+    <!--获取所有的visitorID-->
+    <select id="getVisitorId" resultType="java.lang.Integer">
+
+        select guid
+        from visitors
+    </select>
     <!---->
     <update id="updateCountTimeByGuid">
         update visitor

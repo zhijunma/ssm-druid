@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * 留言管理
  * @author Administrator
@@ -28,5 +30,11 @@ public class MessageManageController {
     @ApiOperation(value="获取留言")
     public GetMessageVO getMessages(){
         return messageManageService.getMessageVO();
+    }
+    @PostMapping(value = "/getByVisitor")
+    @ResponseBody
+    @ApiOperation(value="获取留言ByVisitor")
+    public List<GetMessageVO> getMessagesByVisitor(){
+        return messageManageService.getMessageVOByVisitor();
     }
 }

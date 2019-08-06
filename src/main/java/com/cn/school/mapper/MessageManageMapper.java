@@ -3,6 +3,7 @@ package com.cn.school.mapper;
 import com.cn.school.DTO.GetMessageDTO;
 import com.cn.school.entity.DSMessageInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,4 +25,19 @@ public interface MessageManageMapper {
      * @return
      */
     List<GetMessageDTO> getUnreadMessage();
+
+    /**
+     * 获取未读消息ByVisitor
+     * @param guid
+     * @return
+     */
+    List<GetMessageDTO> getUnreadMessageByVisitor(@Param("guid") Integer guid);
+
+    /**
+     * 获取已读消息ByVisitor
+     * @param guid
+     * @return
+     */
+    List<GetMessageDTO> getReadMessageByVisitor(@Param("guid") Integer guid);
+
 }

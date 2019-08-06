@@ -35,4 +35,10 @@ public interface VisitorMapper {
      */
     Integer updateCountTimeByGuid(@Param("ds") DSVisitorsInfo ds);
 
+    /**
+     * 获取所有的visitorID
+     * @return
+     */
+    List<Integer> getVisitorId();
+
 }
