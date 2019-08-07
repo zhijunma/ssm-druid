@@ -29,4 +29,8 @@ public class GetMessageForm {
      * 结束时间
      */
     private LocalDate endTime;
+    /**
+     * 状态
+     */
+    private String status;
 }

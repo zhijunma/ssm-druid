@@ -1,6 +1,8 @@
 package com.cn.school.service;
 
+import com.cn.school.FormView.GetMessageForm;
 import com.cn.school.FormView.VO.GetMessageVO;
+import com.cn.school.FormView.VO.MessageInfoVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -22,4 +24,11 @@ public interface MessageManageService {
      * @return
      */
     List<GetMessageVO> getMessageVOByVisitor();
+    /**
+     *
+     * 通过添加人和状态获取消息
+     * @param form
+     * @return
+     */
+    List<MessageInfoVO> getMessageVOByVisitorAndStatus(GetMessageForm form);
 }

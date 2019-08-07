@@ -1,6 +1,8 @@
 package com.cn.school.controller;
 
+import com.cn.school.FormView.GetMessageForm;
 import com.cn.school.FormView.VO.GetMessageVO;
+import com.cn.school.FormView.VO.MessageInfoVO;
 import com.cn.school.service.MessageManageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
@@ -37,4 +39,12 @@ public class MessageManageController {
     public List<GetMessageVO> getMessagesByVisitor(){
         return messageManageService.getMessageVOByVisitor();
     }
+
+    @PostMapping(value = "/getByVisitorAndStatus")
+    @ResponseBody
+    @ApiOperation(value="获取留言ByVisitorAndStatus")
+    public List<MessageInfoVO> getByVisitorAndStatus(GetMessageForm form){
+        return messageManageService.getMessageVOByVisitorAndStatus(form);
+    }
+
 }
