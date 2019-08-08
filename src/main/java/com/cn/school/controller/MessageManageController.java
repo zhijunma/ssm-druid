@@ -46,5 +46,10 @@ public class MessageManageController {
     public List<MessageInfoVO> getByVisitorAndStatus(GetMessageForm form){
         return messageManageService.getMessageVOByVisitorAndStatus(form);
     }
-
+    @PostMapping(value = "/updateStatusByVisitor")
+    @ResponseBody
+    @ApiOperation(value="更新留言状态ByVisitor")
+    public String updateStatusByVisitor(GetMessageForm form){
+        return messageManageService.updateStatusByVisitor(form);
+    }
 }

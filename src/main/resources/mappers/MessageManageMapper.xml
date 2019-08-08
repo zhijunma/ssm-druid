@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.school.mapper.MessageManageMapper">
 
-<!--获取已读消息-->
+
+    <!--获取已读消息-->
     <select id="getReadMessage" resultType="com.cn.school.DTO.GetMessageDTO">
 
         select
@@ -75,4 +76,13 @@
         and m.add_visitor_id = #{guid}
         and m.state = 1
     </select>
+    <!--根据添加人ID更新留言状态-->
+    <update id="updateStatusByAddVisitorId">
+        update message
+        set
+        state = 1,
+        mod_time = #{time}
+        where state = 0
+        and add_visitor_id = #{id}
+    </update>
 </mapper>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -40,4 +41,11 @@ public interface MessageManageMapper {
      */
     List<GetMessageDTO> getReadMessageByVisitor(@Param("guid") Integer guid);
 
+    /**
+     * 根据添加人ID更新留言状态
+     * @param addVisitorId
+     * @param time
+     * @return
+     */
+    Integer updateStatusByAddVisitorId(@Param("id") Integer addVisitorId, @Param("time")LocalDateTime time);
 }

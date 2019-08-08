@@ -31,4 +31,11 @@ public interface MessageManageService {
      * @return
      */
     List<MessageInfoVO> getMessageVOByVisitorAndStatus(GetMessageForm form);
+    /**
+     *
+     * 根据添加人ID更新留言状态
+     * @param form
+     * @return
+     */
+    String updateStatusByVisitor(GetMessageForm form);
 }

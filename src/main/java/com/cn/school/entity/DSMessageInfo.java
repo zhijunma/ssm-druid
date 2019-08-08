@@ -31,6 +31,10 @@ public class DSMessageInfo {
      */
     private LocalDate addTime;
     /**
+     * 修改时间
+     */
+    private LocalDate modTime;
+    /**
      * 拉黑？0：1
      */
     private String deleteFlag;

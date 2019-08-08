@@ -4,6 +4,7 @@ import com.cn.school.DTO.GetMessageDTO;
 import com.cn.school.FormView.GetMessageForm;
 import com.cn.school.FormView.VO.GetMessageVO;
 import com.cn.school.FormView.VO.MessageInfoVO;
+import com.cn.school.entity.DSMessageInfo;
 import com.cn.school.mapper.MessageManageMapper;
 import com.cn.school.mapper.VisitorMapper;
 import com.cn.school.service.MessageManageService;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,11 +75,32 @@ public class MessageManageServiceImpl implements MessageManageService {
             MessageInfoVO vo = new MessageInfoVO();
             vo.setAddTime(e.getAddTime());
             vo.setMessage(e.getMessage());
-
+            vo.setAddVisitorId(e.getAddVisitorId());
+            vo.setAddVisitor(e.getAddVisitor());
+            vo.setEmail(e.getEmail());
+            vo.setPhone(e.getPhone());
+            vo.setQq(e.getQq());
 
             vos.add(vo);
         });
 
           return vos;
+    }
+
+    /**
+     * 根据添加人ID更新留言状态
+     *
+     * @param form
+     * @return
+     */
+    @Override
+    public String updateStatusByVisitor(GetMessageForm form) {
+
+        Integer i = manageMapper.updateStatusByAddVisitorId(form.getAddVisitorId(), LocalDateTime.now());
+        if (i > 0) {
+            return "你刚刚阅读了"+i+"条消息。";
+        }else {
+            return "数据库修改失败，请确定网络是否连接！";
+        }
     }
 }
