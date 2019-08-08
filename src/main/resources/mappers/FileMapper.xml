@@ -7,12 +7,14 @@
         insert into file(
         filetype,
         file_src,
+        file_size,
         add_time,
         add_user,
         add_user_id
         ) values (
         #{ds.fileType},
         #{ds.fileSrc},
+        #{ds.fileSize},
         #{ds.addTime},
         #{ds.addUser},
         #{ds.addUserId}

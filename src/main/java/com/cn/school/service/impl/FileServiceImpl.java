@@ -45,7 +45,24 @@ public class FileServiceImpl implements FileService {
     @Override
     public String uploadFile(MultipartFile file) {
         String string = file.getOriginalFilename();
-        System.out.println(UPLOAD_FILE_PATH+string);
+        Long s = file.getSize();
+        String size = s + "b";
+
+        if (s/1024 != 0){
+            s = s/1024;
+            size = s + "k";
+            if (s/1024 != 0){
+                s = s/1024;
+                size = s + "m";
+                if (s/1024 != 0){
+                    s = s/1024;
+                    size = s + "g";
+                }
+            }
+        }
+
+
+        System.out.println(size+"        010101010110");
         //判断不为空
         if (!file.isEmpty()) {
             Map<String, String> resObj = new HashMap<>(MAP_SIZE);
@@ -66,7 +83,7 @@ public class FileServiceImpl implements FileService {
             DSFileInfo ds = new DSFileInfo();
             ds.setFileSrc(string);
             ds.setFileType("file");
-
+            ds.setFileSize(size);
             ds.setAddUserId(1);
             ds.setAddUser("mzj");
             ds.setAddTime(LocalDateTime.now());
@@ -110,7 +127,7 @@ public class FileServiceImpl implements FileService {
             vo.setFileId(e.getFileId());
             vo.setFileSrc(e.getFileSrc());
             vo.setFileType(e.getFileType());
-
+            vo.setFileSize(e.getFileSize());
             vo.setAddTime(e.getAddTime());
             vo.setAddUser(e.getAddUser());
             vo.setAddUserId(e.getAddUserId());

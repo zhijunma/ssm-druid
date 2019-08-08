@@ -22,6 +22,10 @@ public class DSFileInfo {
      */
     private String fileSrc;
     /**
+     * 大小
+     */
+    private String fileSize;
+    /**
      * 添加时间
      */
     private LocalDateTime addTime;
