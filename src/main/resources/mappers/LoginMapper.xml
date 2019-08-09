@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.school.mapper.LoginMapper">
+    <!--获取管理员信息通过账号-->
+
+    <select id="getAdminerByNumber" resultType="com.cn.school.entity.DSAdminer">
+
+        select
+        adminer_id as adminerId,
+        adminer_number as adminerNumber,
+        adminer_name AS adminerName,
+        adminer_pwd AS adminerPwd,
+        role,
+        add_time AS addTime,
+        delete_flag AS deleteFlag
+        from adminer
+        where
+        adminer_number = #{number}
+
+    </select>
+</mapper>
