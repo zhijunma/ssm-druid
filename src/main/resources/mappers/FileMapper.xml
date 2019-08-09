@@ -24,6 +24,7 @@
         select
         file_id as fileId,
         filetype as fileType,
+        file_size as fileSize,
         file_src as fileSrc,
         add_time as addTime,
         add_user as addUser,
@@ -34,7 +35,7 @@
             and file_id = #{ds.fileId}
         </if>
         <if test="ds.fileType != null and '' !=  ds.fileType">
-            and filetype = #{ds.fileType}
+            and filetype like concat('%',#{ds.fileType},'%')
         </if>
         <if test="ds.addUser != null and '' != ds.addUser">
             and add_user = #{ds.addUser}

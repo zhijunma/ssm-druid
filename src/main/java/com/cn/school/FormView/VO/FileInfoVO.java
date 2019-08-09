@@ -22,6 +22,10 @@ public class FileInfoVO {
      */
     private String fileSrc;
     /**
+     * 路径
+     */
+    private String srce;
+    /**
      * 大小
      */
     private String fileSize;
@@ -37,4 +41,8 @@ public class FileInfoVO {
      * 添加者ID
      */
     private Integer addUserId;
+    /**
+     * 下载次数
+     */
+    private Integer downloadCount;
 }

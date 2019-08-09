@@ -14,8 +14,8 @@ public interface DownloadLogMapper {
 
     /**
      * 获取下载总数
-     * @param ds
+     * @param guid
      * @return
      */
-    Integer getCountOfDownload(@Param("ds") DSDownloadCount ds);
+    Integer getCountOfDownload(@Param("guid") Integer guid);
 }

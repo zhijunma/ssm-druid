@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cn.school.FormView.FileForm;
 import com.cn.school.FormView.VO.FileInfoVO;
 import com.cn.school.entity.DSFileInfo;
+import com.cn.school.mapper.DownloadLogMapper;
 import com.cn.school.mapper.FileMapper;
 import com.cn.school.service.FileService;
 import io.swagger.models.auth.In;
@@ -36,6 +37,8 @@ public class FileServiceImpl implements FileService {
 
     @Autowired
     FileMapper fileMapper;
+    @Autowired
+    DownloadLogMapper downloadLogMapper;
     /**
      * 上传文件
      *
@@ -62,7 +65,7 @@ public class FileServiceImpl implements FileService {
         }
 
 
-        System.out.println(size+"        010101010110");
+        System.out.println(file.getContentType()+"        010101010110");
         //判断不为空
         if (!file.isEmpty()) {
             Map<String, String> resObj = new HashMap<>(MAP_SIZE);
@@ -82,7 +85,7 @@ public class FileServiceImpl implements FileService {
             //成功执行操作
             DSFileInfo ds = new DSFileInfo();
             ds.setFileSrc(string);
-            ds.setFileType("file");
+            ds.setFileType(file.getContentType());
             ds.setFileSize(size);
             ds.setAddUserId(1);
             ds.setAddUser("mzj");
@@ -105,7 +108,7 @@ public class FileServiceImpl implements FileService {
     }
 
     /**
-     * 获取文件
+     * 获取文件信息
      *
      * @param file
      * @return
@@ -126,11 +129,13 @@ public class FileServiceImpl implements FileService {
 
             vo.setFileId(e.getFileId());
             vo.setFileSrc(e.getFileSrc());
+            vo.setSrce(UPLOAD_FILE_PATH+e.getFileSrc());
             vo.setFileType(e.getFileType());
             vo.setFileSize(e.getFileSize());
             vo.setAddTime(e.getAddTime());
             vo.setAddUser(e.getAddUser());
             vo.setAddUserId(e.getAddUserId());
+            vo.setDownloadCount(downloadLogMapper.getCountOfDownload(e.getFileId()));
             vos.add(vo);
         });
         return vos;

@@ -7,8 +7,8 @@
         select sum(download_count) as downloadCount
         from download_count
         where delete_flag = 0
-        <if test="ds.fileId != null and '' != ds.fileId">
-            and file_id =  ds.fileId
+        <if test="guid != null and '' != guid">
+            and file_id =  #{guid}
         </if>
     </select>
 </mapper>
