@@ -22,4 +22,13 @@
         from file
         GROUP by filetype
     </select>
+    <select id="getIndexUnreadCount" resultType="java.lang.Integer">
+
+        select count(guid) as unreadCount
+        from message
+        where delete_flag = 0
+        and state = 0
+
+
+    </select>
 </mapper>

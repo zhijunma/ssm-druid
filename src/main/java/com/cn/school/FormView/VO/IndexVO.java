@@ -16,6 +16,10 @@ public class IndexVO {
      */
     private Integer fileCount;
     /**
+     * 未读消息总数
+     */
+    private Integer unreadCount;
+    /**
      * 点赞总数
      */
     private Integer praiseCount;

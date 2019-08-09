@@ -25,6 +25,12 @@ public interface IndexMapper {
      * @return
      */
     Integer getIndexVisitCount();
+    /**
+     * 获取未读消息数
+     *
+     * @return
+     */
+    Integer getIndexUnreadCount();
 
     /**
      * 获取文件类型下的文件数
