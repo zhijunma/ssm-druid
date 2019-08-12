@@ -8,6 +8,7 @@
         filetype,
         file_src,
         file_size,
+        content,
         add_time,
         add_user,
         add_user_id
@@ -15,6 +16,7 @@
         #{ds.fileType},
         #{ds.fileSrc},
         #{ds.fileSize},
+        #{ds.content},
         #{ds.addTime},
         #{ds.addUser},
         #{ds.addUserId}

@@ -2,6 +2,7 @@ package com.cn.school.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cn.school.FormView.FileForm;
+import com.cn.school.FormView.UploadFileForm;
 import com.cn.school.FormView.VO.FileInfoVO;
 import com.cn.school.entity.DSFileInfo;
 import com.cn.school.mapper.DownloadLogMapper;
@@ -42,13 +43,21 @@ public class FileServiceImpl implements FileService {
     /**
      * 上传文件
      *
-     * @param file
+     * @param fileForm
      * @return
      */
     @Override
-    public String uploadFile(MultipartFile file) {
-        String string = file.getOriginalFilename();
-        Long s = file.getSize();
+    public String uploadFile(UploadFileForm fileForm) {
+        String string = new String();
+        if (!fileForm.getFileName().isEmpty()){
+            string = fileForm.getFileName();
+        } else {
+           string = fileForm.getFile().getOriginalFilename();
+        }
+
+
+
+        Long s = fileForm.getFile().getSize();
         String size = s + "b";
 
         if (s/1024 != 0){
@@ -65,15 +74,15 @@ public class FileServiceImpl implements FileService {
         }
 
 
-        System.out.println(file.getContentType()+"        010101010110");
+        System.out.println(fileForm.getFile().getContentType()+"010101010110"+fileForm.getFileName()+fileForm.getContent());
         //判断不为空
-        if (!file.isEmpty()) {
+        if (!fileForm.getFile().isEmpty()) {
             Map<String, String> resObj = new HashMap<>(MAP_SIZE);
             try {
                 //上传文件
                 BufferedOutputStream out = new BufferedOutputStream(
-                        new FileOutputStream(new File(UPLOAD_FILE_PATH, file.getOriginalFilename())));
-                out.write(file.getBytes());
+                        new FileOutputStream(new File(UPLOAD_FILE_PATH, fileForm.getFile().getOriginalFilename())));
+                out.write(fileForm.getFile().getBytes());
                 out.flush();
                 out.close();
             } catch (IOException e) {
@@ -85,8 +94,9 @@ public class FileServiceImpl implements FileService {
             //成功执行操作
             DSFileInfo ds = new DSFileInfo();
             ds.setFileSrc(string);
-            ds.setFileType(file.getContentType());
+            ds.setFileType(fileForm.getFile().getContentType());
             ds.setFileSize(size);
+            ds.setContent(fileForm.getContent());
             ds.setAddUserId(1);
             ds.setAddUser("mzj");
             ds.setAddTime(LocalDateTime.now());
@@ -103,7 +113,7 @@ public class FileServiceImpl implements FileService {
                 return JSONObject.toJSONString(resObj);
             }
         } else {
-            return null;
+            return "网络不在线";
         }
     }
 

@@ -22,6 +22,10 @@ public class DSFileInfo {
      */
     private String fileSrc;
     /**
+     * 备注
+     */
+    private String content;
+    /**
      * 大小
      */
     private String fileSize;
