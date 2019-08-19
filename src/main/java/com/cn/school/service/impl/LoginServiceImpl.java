@@ -32,7 +32,7 @@ public class LoginServiceImpl implements LoginService {
         if (adminer == null){
             return "账号不存在！";
         } else {
-            if (!adminer.getAdminerNumber().equals(userForm.getAdminerNumber())){
+            if (!adminer.getAdminerPwd().equals(userForm.getAdminerPwd())){
                 return "密码错误！";
             } else {
                 return "登录成功！";

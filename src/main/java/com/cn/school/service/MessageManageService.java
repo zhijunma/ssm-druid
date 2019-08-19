@@ -38,4 +38,10 @@ public interface MessageManageService {
      * @return
      */
     String updateStatusByVisitor(GetMessageForm form);
+
+    /**
+     * 删除
+     * @return
+     */
+    String deleteByAddGuid();
 }

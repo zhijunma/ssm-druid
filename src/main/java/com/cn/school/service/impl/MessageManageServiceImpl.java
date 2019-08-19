@@ -103,4 +103,20 @@ public class MessageManageServiceImpl implements MessageManageService {
             return "数据库修改失败，请确定网络是否连接！";
         }
     }
+
+    /**
+     * 删除
+     *
+     * @return
+     */
+    @Override
+    public String deleteByAddGuid() {
+        LocalDateTime t = LocalDateTime.now();
+        Integer i = manageMapper.deleteByAddGuid(t);
+        if (i==0){
+            return "删除失败";
+        } else {
+            return "删除了"+i+"消息";
+        }
+    }
 }

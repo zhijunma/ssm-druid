@@ -52,4 +52,10 @@ public class MessageManageController {
     public String updateStatusByVisitor(GetMessageForm form){
         return messageManageService.updateStatusByVisitor(form);
     }
+    @PostMapping(value = "/deleteByState")
+    @ResponseBody
+    @ApiOperation(value="删除已读留言")
+    public String deleteByAddGuid(){
+        return messageManageService.deleteByAddGuid();
+    }
 }

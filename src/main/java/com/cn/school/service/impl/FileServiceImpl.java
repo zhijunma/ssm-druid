@@ -8,12 +8,10 @@ import com.cn.school.entity.DSFileInfo;
 import com.cn.school.mapper.DownloadLogMapper;
 import com.cn.school.mapper.FileMapper;
 import com.cn.school.service.FileService;
-import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -73,8 +71,8 @@ public class FileServiceImpl implements FileService {
             }
         }
 
-
-        System.out.println(fileForm.getFile().getContentType()+"010101010110"+fileForm.getFileName()+fileForm.getContent());
+        System.out.println(UPLOAD_FILE_PATH+fileForm.getFile().getOriginalFilename());
+//        System.out.println(fileForm.getFile().getContentType()+"010101010110"+fileForm.getFileName()+fileForm.getContent());
         //判断不为空
         if (!fileForm.getFile().isEmpty()) {
             Map<String, String> resObj = new HashMap<>(MAP_SIZE);

@@ -48,4 +48,11 @@ public interface MessageManageMapper {
      * @return
      */
     Integer updateStatusByAddVisitorId(@Param("id") Integer addVisitorId, @Param("time")LocalDateTime time);
+    /**
+     * 根据添加人ID更新留言状态
+     * @param time
+     * @return
+     */
+    Integer deleteByAddGuid(@Param("time")LocalDateTime time);
+
 }

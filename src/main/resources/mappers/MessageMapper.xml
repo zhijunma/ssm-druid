@@ -33,7 +33,7 @@
         v.email as email,
         v.wx as wx,
         v.phone as phone
-        from message m,visitor v
+        from message m,visitors v
         where m.delete_flag = 0
         and m.add_visitor_id = v.guid
         <if test="ds.guid != null and '' != ds.guid">

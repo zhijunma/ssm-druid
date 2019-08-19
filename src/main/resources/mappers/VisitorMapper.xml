@@ -8,7 +8,7 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         insert into
-        visitor(
+        visitors(
         visitor_name,
         phone,
         qq,
@@ -31,7 +31,7 @@
         guid,
         visitor_name as visitorName,
         count_time as countTime
-        from visitor
+        from visitors
         where delete_flag = 0
         <if test="ds.qq != null and '' != ds.qq">
             and qq = #{ds.qq}
@@ -55,7 +55,7 @@
     </select>
     <!---->
     <update id="updateCountTimeByGuid">
-        update visitor
+        update visitors
         set
         count_time = #{ds.countTime}
         where
